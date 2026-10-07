@@ -27,17 +27,17 @@ export function Expertise() {
   }, []);
 
   return (
-    <section className="py-20 md:py-24 bg-secondary border-t border-border relative" id="expertise">
+    <section className="pt-20 pb-10 md:pt-24 md:pb-12 bg-secondary border-t border-border relative" id="expertise">
       <div className="max-w-[1440px] mx-auto px-[5%]" ref={containerRef}>
         <div className="font-sans text-sm uppercase tracking-[0.1em] text-muted-foreground mb-12 flex items-center gap-4 before:content-[''] before:block before:w-10 before:h-px before:bg-muted-foreground">
           Core Expertise
         </div>
         
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col">
           {portfolioData.expertise.map((group, index) => (
             <motion.div
               key={index}
-              className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 py-8 border-b border-border last:border-b-0"
+              className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 py-8 border-b border-border last:border-b-0 last:pb-0 items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}

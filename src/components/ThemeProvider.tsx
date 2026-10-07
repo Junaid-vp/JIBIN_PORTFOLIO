@@ -7,12 +7,12 @@ import Lenis from "lenis";
 export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 2.2, // Increased for more scrolling time/friction
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 0.8, // Reduced to add friction
       touchMultiplier: 2,
     });
 
