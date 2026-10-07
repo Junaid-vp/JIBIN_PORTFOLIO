@@ -44,8 +44,8 @@ export function Header() {
         scrolled ? "h-16 bg-background/80 backdrop-blur-md border-b border-border" : "h-20 bg-transparent border-b border-transparent"
       )}>
         <div className="flex items-center justify-between h-full max-w-[1440px] mx-auto">
-          <Link href="/" className="font-serif text-xl font-semibold tracking-widest uppercase">
-            {portfolioData.identity.name}
+          <Link href="/" className="font-serif text-3xl font-semibold tracking-widest uppercase">
+            JJ
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -85,7 +85,7 @@ export function Header() {
             className="fixed inset-0 bg-background z-[200] flex flex-col p-[5%] pt-6"
           >
             <div className="flex justify-between items-center mb-12">
-              <span className="font-serif text-xl font-semibold tracking-widest uppercase">{portfolioData.identity.name}</span>
+              <span className="font-serif text-3xl font-semibold tracking-widest uppercase">JJ</span>
               <button 
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-foreground p-1"
