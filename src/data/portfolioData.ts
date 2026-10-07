@@ -101,9 +101,9 @@ export const portfolioData = {
       ]
     },
     {
-      role: "System Engineer / BI Administrator & Data Reporting Specialist",
+      role: "System  Administrator & Data Reporting Specialist",
       company: "ICON Global Consultant Engineers Limited LLC",
-      date: "Feb 2024 – Present",
+      date: "Feb 2024 – Apr 2026",
       shortSummary: "Administered enterprise Power BI deployments and engineered data warehousing pipelines.",
       highlights: [
         "Maintained 99%+ dashboard availability.",
@@ -123,7 +123,7 @@ export const portfolioData = {
       ]
     },
     {
-      role: "Assistant System Engineer – Data & BI Systems Support",
+      role: "Assistant Systems Engineer – Data & BI Systems Support",
       company: "Tata Consultancy Services Limited",
       project: "GOSI, Saudi Arabia",
       date: "Sep 2019 – Sep 2021",
