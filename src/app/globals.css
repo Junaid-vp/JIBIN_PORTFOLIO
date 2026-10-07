@@ -52,27 +52,27 @@
 }
 
 .dark {
-  /* DARK MODE */
-  --background: #0C0A08;
-  --foreground: #E8E5DD;
+  /* DARK MODE (Black & White) */
+  --background: #000000;
+  --foreground: #FAFAFA;
 
-  --primary: #DCBC98;
-  --primary-foreground: #0C0A08;
+  --primary: #FFFFFF;
+  --primary-foreground: #000000;
 
-  --secondary: #2A3723;
-  --secondary-foreground: #E8E5DD;
+  --secondary: #111111;
+  --secondary-foreground: #FAFAFA;
 
-  --muted: #2A3723;
-  --muted-foreground: #B9BBA8;
+  --muted: #111111;
+  --muted-foreground: #A1A1AA;
 
-  --accent: #DCBC98;
-  --accent-foreground: #0C0A08;
+  --accent: #FFFFFF;
+  --accent-foreground: #000000;
 
-  --olive: #2A3723;
+  --olive: #111111;
 
-  --border: #2A3723;
-  --input: #2A3723;
-  --ring: #DCBC98;
+  --border: #27272A;
+  --input: #27272A;
+  --ring: #D4D4D8;
 }
 
 @layer base {
