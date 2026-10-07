@@ -1,26 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-olive: var(--olive);
+
+  --font-sans: 'Nunito', sans-serif;
+  --font-serif: 'Nunito', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* LIGHT MODE */
+  --background: #E8E5DD;
+  --foreground: #0C0A08;
+
+  --primary: #0C0A08;
+  --primary-foreground: #E8E5DD;
+
+  --secondary: #FFFFFF;
+  --secondary-foreground: #0C0A08;
+
+  --muted: #B9BBA8;
+  --muted-foreground: #72766D;
+
+  --accent: #A77E5B;
+  --accent-foreground: #FFFFFF;
+
+  --olive: #2A3723;
+
+  --border: rgba(12, 10, 8, 0.14);
+  --input: rgba(12, 10, 8, 0.14);
+  --ring: #0C0A08;
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* DARK MODE */
+  --background: #0C0A08;
+  --foreground: #E8E5DD;
+
+  --primary: #DCBC98;
+  --primary-foreground: #0C0A08;
+
+  --secondary: #2A3723;
+  --secondary-foreground: #E8E5DD;
+
+  --muted: #2A3723;
+  --muted-foreground: #B9BBA8;
+
+  --accent: #DCBC98;
+  --accent-foreground: #0C0A08;
+
+  --olive: #2A3723;
+
+  --border: #2A3723;
+  --input: #2A3723;
+  --ring: #DCBC98;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground transition-colors duration-500;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-medium leading-tight;
+  }
+
+  /* Lenis smooth scrolling base */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
 }
