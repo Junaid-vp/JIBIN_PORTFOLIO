@@ -69,9 +69,9 @@ export function Hero() {
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[var(--olive)]/10 dark:bg-[var(--olive)]/20 mix-blend-multiply dark:mix-blend-color z-10 pointer-events-none" />
             <img 
-              src="/jibin-profile.jpg" 
+              src="/Professional Portrait in Striped Shirt.png" 
               alt="Jibin Johnson"
-              className="w-full h-full object-cover object-[50%_25%] grayscale hover:grayscale-0 transition-all duration-700"
+              className="w-full h-full object-cover object-[50%_15%] grayscale hover:grayscale-0 transition-all duration-700"
             />
           </div>
 

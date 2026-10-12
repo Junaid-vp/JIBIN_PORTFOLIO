@@ -119,3 +119,42 @@
     pointer-events: none;
   }
 }
+
+@utility animate-marquee-x {
+  animation: marqueeHorizontal 28s linear infinite;
+}
+
+@utility animate-marquee-x-reverse {
+  animation: marqueeHorizontalReverse 28s linear infinite;
+}
+
+@utility animate-marquee-y {
+  animation: marqueeVertical 18s linear infinite;
+}
+
+@keyframes marqueeHorizontal {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeHorizontalReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes marqueeVertical {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
