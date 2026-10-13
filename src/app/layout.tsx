@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { Nunito, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Preloader } from "@/components/Preloader";
@@ -9,9 +9,10 @@ const nunito = Nunito({
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-sans" 
 });
-const nunitoSerif = Nunito({ 
+const cormorant = Cormorant_Garamond({ 
   subsets: ["latin"], 
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-serif" 
 });
 
@@ -27,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${nunito.variable} ${nunitoSerif.variable} antialiased selection:bg-accent selection:text-accent-foreground`}>
+      <body className={`${nunito.variable} ${cormorant.variable} antialiased selection:bg-accent selection:text-accent-foreground`}>
         <Preloader />
         <ThemeProvider>
           {children}

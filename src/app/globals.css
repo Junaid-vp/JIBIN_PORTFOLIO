@@ -21,8 +21,8 @@
   --color-ring: var(--ring);
   --color-olive: var(--olive);
 
-  --font-sans: 'Sirivennela', sans-serif;
-  --font-serif: 'Sirivennela', sans-serif;
+  --font-sans: var(--font-sans), 'Nunito', sans-serif;
+  --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
 }
 
 :root {

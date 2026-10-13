@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon, Download } from "lucide-react";
 import { portfolioData } from "@/data/portfolioData";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import SquishSwitch from "@/components/SquishSwitch";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,37 +42,101 @@ export function Header() {
     <>
       <header className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-[5%]",
-        scrolled ? "h-16 bg-background/80 backdrop-blur-md border-b border-border" : "h-20 bg-transparent border-b border-transparent"
+        scrolled ? "h-16 bg-background/85 backdrop-blur-md border-b border-border shadow-xs" : "h-20 bg-transparent border-b border-transparent"
       )}>
         <div className="flex items-center justify-between h-full max-w-[1440px] mx-auto">
-          <Link href="/" className="font-serif text-3xl font-semibold tracking-widest uppercase">
-            JJ
+          
+          {/* Logo & Brand Info */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <span className="font-serif text-3xl font-semibold tracking-widest uppercase text-foreground">
+              JJ
+            </span>
+            <div className="hidden sm:flex flex-col border-l border-border/70 pl-3">
+              <span className="text-xs font-semibold tracking-wider uppercase text-foreground">
+                {portfolioData.identity.name}
+              </span>
+              <span className="text-[10px] text-muted-foreground font-medium">
+                {portfolioData.identity.title}
+              </span>
+            </div>
           </Link>
 
+          {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                {link.name}
+              <Link key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group py-1">
+                <span>{link.name}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C59B63] transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-6">
-            <a href={portfolioData.identity.resumeUrl} download className="text-sm font-medium bg-foreground text-background px-5 py-2 rounded transition-transform hover:-translate-y-0.5 hover:opacity-90">
-              Resume
+          {/* Desktop Right Actions: Download Resume & Theme Toggle */}
+          <div className="hidden lg:flex items-center gap-4">
+            <a 
+              href={portfolioData.identity.resumeUrl} 
+              download 
+              className="text-xs font-medium bg-[#A67E50] text-[#000000ff] dark:bg-white dark:text-[#121614] hover:bg-[#ffffffff] dark:hover:bg-neutral-200 px-3.5 py-1.5 rounded-full transition-all duration-200 flex items-center gap-1.5 border border-black/10 dark:border-white/10 shadow-2xs cursor-pointer"
+            >
+              <Download size={13} className="text-[#000000ff] dark:text-[#000000ff]" />
+              <span>Resume</span>
             </a>
-            <button onClick={toggleTheme} className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground hover:text-foreground transition-colors px-2 py-1 border border-transparent hover:border-border rounded" aria-label="Toggle Theme">
-              {mounted ? (resolvedTheme === "dark" ? "LIGHT" : "DARK") : "THEME"}
+
+            {/* SquishSwitch Theme Toggle */}
+            {mounted ? (
+              <div className="flex items-center gap-2  rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 shadow-2xs transition-colors">
+              
+                <SquishSwitch
+                  checked={resolvedTheme === "dark"}
+                  onChange={(val) => setTheme(val ? "dark" : "light")}
+                  ariaLabel="Toggle dark/light mode"
+                  width={46}
+                  height={24}
+                  radius={12}
+                  trackColor="#D8D1C3"
+                  trackOnColor="#ffffffff"
+                  thumbColor="#A67E50"
+                  thumbOnColor="#000000ff"
+                  speed={60}
+                  stretch={35}
+                />
+               
+              </div>
+            ) : (
+              <div className="w-[84px] h-[34px]" />
+            )}
+          </div>
+
+          {/* Mobile Right Actions: Theme Toggle & Hamburger */}
+          <div className="flex lg:hidden items-center gap-3">
+            {mounted && (
+              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
+                <SquishSwitch
+                  checked={resolvedTheme === "dark"}
+                  onChange={(val) => setTheme(val ? "dark" : "light")}
+                  ariaLabel="Toggle dark/light mode"
+                  width={40}
+                  height={22}
+                  radius={11}
+                  trackColor="#D8D1C3"
+                  trackOnColor="#38493fff"
+                  thumbColor="#000000ff"
+                  thumbOnColor="#000000ff"
+                  speed={60}
+                  stretch={35}
+                />
+              </div>
+            )}
+
+            <button 
+              className="text-foreground p-1.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-colors" 
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open Menu"
+            >
+              <Menu size={22} />
             </button>
           </div>
 
-          <button 
-            className="lg:hidden text-foreground p-1" 
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open Menu"
-          >
-            <Menu size={24} />
-          </button>
         </div>
       </header>
 
@@ -84,22 +149,22 @@ export function Header() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 bg-background z-[200] flex flex-col p-[5%] pt-6"
           >
-            <div className="flex justify-between items-center mb-12">
+            <div className="flex justify-between items-center mb-10">
               <span className="font-serif text-3xl font-semibold tracking-widest uppercase">JJ</span>
               <button 
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-foreground p-1"
+                className="text-foreground p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
               >
                 <X size={24} />
               </button>
             </div>
             
-            <nav className="flex flex-col gap-8 flex-1">
+            <nav className="flex flex-col gap-6 flex-1">
               {navLinks.map((link) => (
                 <Link 
                   key={link.name} 
                   href={link.href} 
-                  className="text-2xl font-serif text-muted-foreground hover:text-foreground"
+                  className="text-2xl font-serif text-muted-foreground hover:text-foreground transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -107,13 +172,34 @@ export function Header() {
               ))}
             </nav>
 
-            <div className="flex justify-between items-center mt-8 pb-8">
-               <a href={portfolioData.identity.resumeUrl} download className="text-sm font-medium bg-foreground text-background px-6 py-3 rounded">
-                  Download Resume
-               </a>
-               <button onClick={toggleTheme} className="font-sans text-xs uppercase tracking-[0.2em] font-semibold text-muted-foreground hover:text-foreground p-2 border border-border rounded" aria-label="Toggle Theme">
-                  {mounted ? (resolvedTheme === "dark" ? "LIGHT MODE" : "DARK MODE") : "THEME"}
-               </button>
+            <div className="flex items-center justify-between gap-4 mt-8 pb-8 pt-4 border-t border-border">
+              <a 
+                href={portfolioData.identity.resumeUrl} 
+                download 
+                className="text-xs font-medium bg-[#141A16] text-[#EFEAE2] dark:bg-white dark:text-[#121614] px-4 py-2 rounded-full flex items-center gap-1.5"
+              >
+                <Download size={13} className="text-[#C59B63] dark:text-[#B8874E]" />
+                <span>Resume</span>
+              </a>
+
+              {mounted && (
+                <div className="flex items-center gap-2 rounded-xl border border-border bg-secondary/50">
+                  <SquishSwitch
+                    checked={resolvedTheme === "dark"}
+                    onChange={(val) => setTheme(val ? "dark" : "light")}
+                    ariaLabel="Toggle dark/light mode"
+                    width={46}
+                    height={24}
+                    radius={12}
+                    trackColor="#D8D1C3"
+                    trackOnColor="#16201A"
+                    thumbColor="#A67E50"
+                    thumbOnColor="#C59B63"
+                    speed={60}
+                    stretch={35}
+                  />
+                </div>
+              )}
             </div>
           </motion.div>
         )}
