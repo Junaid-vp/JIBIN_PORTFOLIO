@@ -8,6 +8,7 @@ import { portfolioData } from "@/data/portfolioData";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import SquishSwitch from "@/components/SquishSwitch";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,8 +28,8 @@ export function Header() {
   const navLinks = [
     { name: "About", href: "#about" },
     { name: "Impact", href: "#impact" },
-    { name: "Experience", href: "#experience" },
     { name: "Expertise", href: "#expertise" },
+    { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Education", href: "#education" },
     { name: "Contact", href: "#contact" },
@@ -36,6 +37,23 @@ export function Header() {
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      smoothScrollTo(href, 70, 900);
+      window.history.pushState(null, "", href);
+    }
+  };
+
+  const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    setTimeout(() => {
+      smoothScrollTo(href, 70, 900);
+      window.history.pushState(null, "", href);
+    }, 120);
   };
 
   return (
@@ -64,10 +82,15 @@ export function Header() {
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group py-1">
+              <a 
+                key={link.name} 
+                href={link.href} 
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group py-1 cursor-pointer"
+              >
                 <span>{link.name}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C59B63] transition-all duration-300 group-hover:w-full" />
-              </Link>
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
+              </a>
             ))}
           </nav>
 
@@ -76,16 +99,15 @@ export function Header() {
             <a 
               href={portfolioData.identity.resumeUrl} 
               download 
-              className="text-xs font-medium bg-[#A67E50] text-[#000000ff] dark:bg-white dark:text-[#121614] hover:bg-[#ffffffff] dark:hover:bg-neutral-200 px-3.5 py-1.5 rounded-full transition-all duration-200 flex items-center gap-1.5 border border-black/10 dark:border-white/10 shadow-2xs cursor-pointer"
+              className="text-xs font-medium bg-foreground text-background dark:bg-white dark:text-[#0B0F19] hover:opacity-90 px-3.5 py-1.5 rounded-full transition-all duration-200 flex items-center gap-1.5 border border-border shadow-xs cursor-pointer"
             >
-              <Download size={13} className="text-[#000000ff] dark:text-[#000000ff]" />
+              <Download size={13} className="text-accent dark:text-blue-600" />
               <span>Resume</span>
             </a>
 
             {/* SquishSwitch Theme Toggle */}
             {mounted ? (
-              <div className="flex items-center gap-2  rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 shadow-2xs transition-colors">
-              
+              <div className="flex items-center gap-2 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 shadow-2xs transition-colors">
                 <SquishSwitch
                   checked={resolvedTheme === "dark"}
                   onChange={(val) => setTheme(val ? "dark" : "light")}
@@ -93,14 +115,13 @@ export function Header() {
                   width={46}
                   height={24}
                   radius={12}
-                  trackColor="#D8D1C3"
-                  trackOnColor="#ffffffff"
-                  thumbColor="#A67E50"
-                  thumbOnColor="#000000ff"
+                  trackColor="#E2E8F0"
+                  trackOnColor="#1E293B"
+                  thumbColor="#2563EB"
+                  thumbOnColor="#38BDF8"
                   speed={60}
                   stretch={35}
                 />
-               
               </div>
             ) : (
               <div className="w-[84px] h-[34px]" />
@@ -118,10 +139,10 @@ export function Header() {
                   width={40}
                   height={22}
                   radius={11}
-                  trackColor="#D8D1C3"
-                  trackOnColor="#38493fff"
-                  thumbColor="#000000ff"
-                  thumbOnColor="#000000ff"
+                  trackColor="#E2E8F0"
+                  trackOnColor="#1E293B"
+                  thumbColor="#2563EB"
+                  thumbOnColor="#38BDF8"
                   speed={60}
                   stretch={35}
                 />
@@ -161,14 +182,14 @@ export function Header() {
             
             <nav className="flex flex-col gap-6 flex-1">
               {navLinks.map((link) => (
-                <Link 
+                <a 
                   key={link.name} 
                   href={link.href} 
-                  className="text-2xl font-serif text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-2xl font-serif text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                  onClick={(e) => handleMobileNavClick(e, link.href)}
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
             </nav>
 
@@ -176,9 +197,9 @@ export function Header() {
               <a 
                 href={portfolioData.identity.resumeUrl} 
                 download 
-                className="text-xs font-medium bg-[#141A16] text-[#EFEAE2] dark:bg-white dark:text-[#121614] px-4 py-2 rounded-full flex items-center gap-1.5"
+                className="text-xs font-medium bg-foreground text-background dark:bg-white dark:text-[#0B0F19] px-4 py-2 rounded-full flex items-center gap-1.5"
               >
-                <Download size={13} className="text-[#C59B63] dark:text-[#B8874E]" />
+                <Download size={13} className="text-accent dark:text-blue-600" />
                 <span>Resume</span>
               </a>
 
@@ -191,10 +212,10 @@ export function Header() {
                     width={46}
                     height={24}
                     radius={12}
-                    trackColor="#D8D1C3"
-                    trackOnColor="#16201A"
-                    thumbColor="#A67E50"
-                    thumbOnColor="#C59B63"
+                    trackColor="#E2E8F0"
+                    trackOnColor="#1E293B"
+                    thumbColor="#2563EB"
+                    thumbOnColor="#38BDF8"
                     speed={60}
                     stretch={35}
                   />

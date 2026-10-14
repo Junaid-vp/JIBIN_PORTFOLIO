@@ -107,7 +107,7 @@ export function Expertise() {
   }, []);
 
   return (
-    <section className="pt-20 pb-16 md:pt-24 md:pb-20 bg-secondary border-t border-border relative overflow-hidden" id="expertise">
+    <section className="pt-16 pb-16 md:pt-20 md:pb-20 bg-secondary border-t border-border relative overflow-hidden scroll-mt-20" id="expertise">
       {/* Embedded styles ensuring immediate 100% reliable execution in browser */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes marqueeLeft {

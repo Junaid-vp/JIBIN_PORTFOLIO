@@ -64,7 +64,20 @@ export function DottedGlobe({
       }
     }
 
+    let isVisible = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      const wasVisible = isVisible;
+      isVisible = entry.isIntersecting;
+      if (isVisible && !wasVisible) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = requestAnimationFrame(render);
+      }
+    }, { threshold: 0.05 });
+
+    observer.observe(canvas);
+
     const render = () => {
+      if (!isVisible) return;
       ctx.clearRect(0, 0, width, height);
 
       const centerX = width * 0.5;
@@ -72,8 +85,8 @@ export function DottedGlobe({
 
       // Soft back glow
       const glowGrad = ctx.createRadialGradient(centerX, centerY, 10, centerX, centerY, radius * 1.25);
-      glowGrad.addColorStop(0, "rgba(197, 155, 99, 0.16)");
-      glowGrad.addColorStop(0.5, "rgba(60, 95, 75, 0.12)");
+      glowGrad.addColorStop(0, "rgba(56, 189, 248, 0.16)");
+      glowGrad.addColorStop(0.5, "rgba(37, 99, 235, 0.08)");
       glowGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
       ctx.fillStyle = glowGrad;
       ctx.beginPath();
@@ -81,7 +94,7 @@ export function DottedGlobe({
       ctx.fill();
 
       // Atmospheric outer rim
-      ctx.strokeStyle = "rgba(197, 155, 99, 0.18)";
+      ctx.strokeStyle = "rgba(56, 189, 248, 0.20)";
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
@@ -139,8 +152,8 @@ export function DottedGlobe({
           const dotSize = p.isMajor ? 1.4 : 1.1;
 
           ctx.fillStyle = p.pz > 40
-            ? `rgba(240, 225, 205, ${alpha})`
-            : `rgba(180, 195, 185, ${alpha * 0.8})`;
+            ? `rgba(224, 242, 254, ${alpha})`
+            : `rgba(56, 189, 248, ${alpha * 0.8})`;
 
           ctx.beginPath();
           ctx.arc(p.px, p.py, dotSize, 0, Math.PI * 2);
@@ -148,7 +161,7 @@ export function DottedGlobe({
         } else {
           // Fainter back points
           const alpha = 0.06 + depthRatio * 0.12;
-          ctx.fillStyle = `rgba(130, 150, 140, ${alpha})`;
+          ctx.fillStyle = `rgba(148, 163, 184, ${alpha})`;
           ctx.beginPath();
           ctx.arc(p.px, p.py, 0.75, 0, Math.PI * 2);
           ctx.fill();
@@ -158,10 +171,9 @@ export function DottedGlobe({
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
-
     return () => {
       cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
     };
   }, []);
 

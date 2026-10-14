@@ -34,7 +34,7 @@ export function Experience() {
   };
 
   return (
-    <section className="py-20 md:py-24 bg-background relative" id="experience">
+    <section className="pt-16 pb-20 md:pt-20 md:pb-24 bg-background relative scroll-mt-20" id="experience">
       <div className="max-w-[1000px] mx-auto px-[5%]" ref={containerRef}>
         <div className="font-sans text-sm uppercase tracking-[0.1em] text-muted-foreground mb-12 flex items-center gap-4 before:content-[''] before:block before:w-10 before:h-px before:bg-muted-foreground">
           Professional Experience

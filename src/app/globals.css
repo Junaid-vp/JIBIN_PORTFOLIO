@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -23,56 +24,57 @@
 
   --font-sans: var(--font-sans), 'Nunito', sans-serif;
   --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  --font-signature: var(--font-signature), 'Dancing Script', cursive;
 }
 
 :root {
-  /* LIGHT MODE */
-  --background: #E8E5DD;
-  --foreground: #0C0A08;
+  /* LIGHT MODE (Modern Tech & Precision Analytics) */
+  --background: #F8FAFC;
+  --foreground: #0F172A;
 
-  --primary: #0C0A08;
-  --primary-foreground: #E8E5DD;
+  --primary: #0F172A;
+  --primary-foreground: #FFFFFF;
 
   --secondary: #FFFFFF;
-  --secondary-foreground: #0C0A08;
+  --secondary-foreground: #0F172A;
 
-  --muted: #B9BBA8;
-  --muted-foreground: #72766D;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
 
-  --accent: #A77E5B;
+  --accent: #2563EB;
   --accent-foreground: #FFFFFF;
 
-  --olive: #2A3723;
+  --olive: #059669;
 
-  --border: rgba(12, 10, 8, 0.14);
-  --input: rgba(12, 10, 8, 0.14);
-  --ring: #0C0A08;
+  --border: rgba(15, 23, 42, 0.08);
+  --input: rgba(15, 23, 42, 0.08);
+  --ring: #2563EB;
 
   --radius: 0.5rem;
 }
 
 .dark {
-  /* DARK MODE (Black & White) */
-  --background: #000000;
-  --foreground: #FAFAFA;
+  /* DARK MODE (Midnight Obsidian & Electric Azure) */
+  --background: #0B0F19;
+  --foreground: #F8FAFC;
 
-  --primary: #FFFFFF;
-  --primary-foreground: #000000;
+  --primary: #38BDF8;
+  --primary-foreground: #0B0F19;
 
-  --secondary: #111111;
-  --secondary-foreground: #FAFAFA;
+  --secondary: #111827;
+  --secondary-foreground: #F8FAFC;
 
-  --muted: #111111;
-  --muted-foreground: #A1A1AA;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
 
-  --accent: #FFFFFF;
-  --accent-foreground: #000000;
+  --accent: #38BDF8;
+  --accent-foreground: #0B0F19;
 
-  --olive: #111111;
+  --olive: #10B981;
 
-  --border: #27272A;
-  --input: #27272A;
-  --ring: #D4D4D8;
+  --border: rgba(255, 255, 255, 0.09);
+  --input: rgba(255, 255, 255, 0.09);
+  --ring: #38BDF8;
 }
 
 @layer base {
@@ -81,7 +83,7 @@
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-500;
+    @apply bg-background text-foreground;
   }
 
   html {
@@ -136,6 +138,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -145,6 +148,7 @@
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0%);
   }
@@ -154,6 +158,7 @@
   0% {
     transform: translateY(0%);
   }
+
   100% {
     transform: translateY(-50%);
   }

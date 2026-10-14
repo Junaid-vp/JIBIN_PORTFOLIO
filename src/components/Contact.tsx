@@ -204,195 +204,191 @@ export function Contact() {
   ];
 
   return (
-    <section className="min-h-screen flex flex-col justify-center pt-16 sm:pt-20 pb-4 sm:pb-6 scroll-mt-0 bg-[#EFEAE2] dark:bg-black text-foreground relative overflow-hidden transition-colors duration-500" id="contact">
+    <section className="min-h-[calc(100vh-4rem)] flex items-center py-4 sm:py-6 lg:py-4 scroll-mt-16 bg-background text-foreground relative overflow-hidden" id="contact">
       
       {/* Decorative Topographic Curves Background */}
       <div className="absolute right-0 top-0 w-full max-w-3xl h-full pointer-events-none opacity-20 dark:opacity-10 overflow-hidden">
-        <svg viewBox="0 0 800 800" className="w-full h-full text-[#C59B63]" fill="none" stroke="currentColor" strokeWidth="1.2">
+        <svg viewBox="0 0 800 800" className="w-full h-full text-accent/30" fill="none" stroke="currentColor" strokeWidth="1.2">
           <path d="M450,-50 C520,120 620,180 780,220 C840,240 880,310 850,420 C820,530 680,590 560,650 C440,710 320,780 200,850" />
           <path d="M400,-70 C470,100 580,160 740,190 C800,210 850,280 820,380 C790,480 660,550 530,620 C400,690 280,750 160,820" />
           <path d="M350,-90 C420,80 540,140 700,160 C760,180 820,250 790,340 C760,430 640,510 500,590 C360,670 240,720 120,790" />
         </svg>
       </div>
 
-      <div className="max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 xl:gap-6 items-stretch">
+      <div className="max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* ================= LEFT COLUMN ================= */}
-          <div className="lg:col-span-6 flex flex-col justify-between gap-2 sm:gap-3">
+          <div className="lg:col-span-5 flex flex-col gap-4 sm:gap-5 justify-between">
             
             {/* Top Info Section */}
-            <div className="flex flex-col gap-1.5 sm:gap-2">
+            <div className="flex flex-col gap-2">
               
               {/* Eyebrow */}
-              <div className="flex items-center gap-2.5">
-                <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#A67E50] dark:text-[#C59B63]">
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] uppercase tracking-[0.25em] font-semibold text-accent">
                   Let&apos;s Connect
                 </span>
-                <span className="w-8 h-[1.5px] bg-[#A67E50]/50 dark:bg-[#C59B63]/60 inline-block" />
+                <span className="w-7 h-[1.5px] bg-accent/60 inline-block" />
               </div>
 
               {/* Main Heading */}
-              <h2 className="font-serif text-[clamp(2.1rem,3.2vw,3.2rem)] leading-[0.98] tracking-tight font-normal text-[#121614] dark:text-neutral-100 m-0">
-                Let&apos;s Work <br />
-                With <span className="text-[#B8874E] italic font-serif">Data.</span>
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-[2.2rem] leading-tight tracking-tight font-normal text-foreground m-0">
+                Let&apos;s Work With <span className="text-accent italic font-serif">Data.</span>
               </h2>
 
               {/* Subtitle */}
-              <p className="font-sans text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-normal sm:leading-relaxed max-w-xl m-0">
-                I&apos;m open to freelance projects, consulting opportunities, and collaborative work in BI, data analytics, reporting, and automation. If you have a project in mind or just want to discuss ideas, I&apos;d love to hear from you.
+              <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-lg m-0">
+                Open to freelance projects, consulting, and collaborations in BI, data analytics, ETL, and automated dashboards.
               </p>
+            </div>
 
-              {/* 4 Contact Cards Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-0.5">
-                
-                {/* Email Card */}
-                <div className="bg-[#E7E1D6]/85 dark:bg-[#14100E] border border-[#D8D0C3] dark:border-[#382820]/80 rounded-xl py-1.5 px-3 sm:py-2 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-[#C59B63]/50 transition-all group">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1C1512] dark:bg-white/10 text-white flex items-center justify-center shrink-0">
-                      <Mail size={14} />
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold">
-                        Email
-                      </span>
-                      <span className="text-xs sm:text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate" title={portfolioData.identity.email}>
-                        {portfolioData.identity.email}
-                      </span>
-                    </div>
-                  </div>
-                  <button 
-                    type="button"
-                    onClick={() => handleCopy(portfolioData.identity.email, "email")}
-                    className="p-1 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white rounded-lg transition-colors shrink-0 cursor-pointer"
-                    title={copiedField === "email" ? "Copied!" : "Copy email"}
-                    aria-label="Copy email"
-                  >
-                    {copiedField === "email" ? (
-                      <Check size={14} className="text-emerald-600 dark:text-emerald-400" />
-                    ) : (
-                      <Copy size={14} />
-                    )}
-                  </button>
-                </div>
-
-                {/* Phone Card */}
-                <div className="bg-[#E7E1D6]/85 dark:bg-[#14100E] border border-[#D8D0C3] dark:border-[#382820]/80 rounded-xl py-1.5 px-3 sm:py-2 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-[#C59B63]/50 transition-all group">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1C1512] dark:bg-white/10 text-white flex items-center justify-center shrink-0">
-                      <Phone size={14} />
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold">
-                        Phone
-                      </span>
-                      <span className="text-xs sm:text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate">
-                        {portfolioData.identity.phone}
-                      </span>
-                    </div>
-                  </div>
-                  <button 
-                    type="button"
-                    onClick={() => handleCopy(portfolioData.identity.phone, "phone")}
-                    className="p-1 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white rounded-lg transition-colors shrink-0 cursor-pointer"
-                    title={copiedField === "phone" ? "Copied!" : "Copy phone"}
-                    aria-label="Copy phone"
-                  >
-                    {copiedField === "phone" ? (
-                      <Check size={14} className="text-emerald-600 dark:text-emerald-400" />
-                    ) : (
-                      <Copy size={14} />
-                    )}
-                  </button>
-                </div>
-
-                {/* Location Card */}
-                <div className="bg-[#E7E1D6]/85 dark:bg-[#14100E] border border-[#D8D0C3] dark:border-[#382820]/80 rounded-xl py-1.5 px-3 sm:py-2 sm:px-3.5 flex items-center gap-2.5 shadow-xs hover:border-[#C59B63]/50 transition-all">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1C1512] dark:bg-white/10 text-white flex items-center justify-center shrink-0">
-                    <MapPin size={14} />
+            {/* 4 Contact Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              
+              {/* Email Card */}
+              <div className="bg-secondary/90 dark:bg-slate-900/90 border border-border rounded-xl p-2.5 sm:p-3 flex items-center justify-between gap-2.5 shadow-xs hover:border-accent/50 transition-all group">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                    <Mail size={15} />
                   </div>
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold">
-                      Location
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                      Email
                     </span>
-                    <span className="text-xs sm:text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate">
-                      {portfolioData.identity.location}
+                    <span className="text-xs font-medium text-foreground truncate" title={portfolioData.identity.email}>
+                      {portfolioData.identity.email}
                     </span>
                   </div>
                 </div>
-
-                {/* LinkedIn Card */}
-                <div className="bg-[#E7E1D6]/85 dark:bg-[#14100E] border border-[#D8D0C3] dark:border-[#382820]/80 rounded-xl py-1.5 px-3 sm:py-2 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-[#C59B63]/50 transition-all group">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1C1512] dark:bg-white/10 text-white flex items-center justify-center shrink-0">
-                      <LinkedinIcon size={14} />
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold">
-                        LinkedIn
-                      </span>
-                      <span className="text-xs sm:text-sm font-medium text-neutral-900 dark:text-neutral-100" title="linkedin.com/in/jibin-309johnson">
-                        linkedin.com/in/jibin-309johnson
-                      </span>
-                    </div>
-                  </div>
-                  <a 
-                    href={portfolioData.identity.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-1 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white rounded-lg transition-colors shrink-0"
-                    title="Open LinkedIn"
-                    aria-label="Open LinkedIn profile"
-                  >
-                    <ExternalLink size={14} />
-                  </a>
-                </div>
-
+                <button 
+                  type="button"
+                  onClick={() => handleCopy(portfolioData.identity.email, "email")}
+                  className="p-1 text-muted-foreground hover:text-foreground rounded transition-colors shrink-0 cursor-pointer"
+                  title={copiedField === "email" ? "Copied!" : "Copy email"}
+                  aria-label="Copy email"
+                >
+                  {copiedField === "email" ? (
+                    <Check size={14} className="text-emerald-500" />
+                  ) : (
+                    <Copy size={14} />
+                  )}
+                </button>
               </div>
+
+              {/* Phone Card */}
+              <div className="bg-secondary/90 dark:bg-slate-900/90 border border-border rounded-xl p-2.5 sm:p-3 flex items-center justify-between gap-2.5 shadow-xs hover:border-accent/50 transition-all group">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                    <Phone size={15} />
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                      Phone
+                    </span>
+                    <span className="text-xs font-medium text-foreground truncate">
+                      {portfolioData.identity.phone}
+                    </span>
+                  </div>
+                </div>
+                <button 
+                  type="button"
+                  onClick={() => handleCopy(portfolioData.identity.phone, "phone")}
+                  className="p-1 text-muted-foreground hover:text-foreground rounded transition-colors shrink-0 cursor-pointer"
+                  title={copiedField === "phone" ? "Copied!" : "Copy phone"}
+                  aria-label="Copy phone"
+                >
+                  {copiedField === "phone" ? (
+                    <Check size={14} className="text-emerald-500" />
+                  ) : (
+                    <Copy size={14} />
+                  )}
+                </button>
+              </div>
+
+              {/* Location Card */}
+              <div className="bg-secondary/90 dark:bg-slate-900/90 border border-border rounded-xl p-2.5 sm:p-3 flex items-center gap-2.5 shadow-xs hover:border-accent/50 transition-all">
+                <div className="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                  <MapPin size={15} />
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                    Location
+                  </span>
+                  <span className="text-xs font-medium text-foreground truncate">
+                    {portfolioData.identity.location}
+                  </span>
+                </div>
+              </div>
+
+              {/* LinkedIn Card */}
+              <div className="bg-secondary/90 dark:bg-slate-900/90 border border-border rounded-xl p-2.5 sm:p-3 flex items-center justify-between gap-2.5 shadow-xs hover:border-accent/50 transition-all group">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                    <LinkedinIcon size={15} />
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                      LinkedIn
+                    </span>
+                    <span className="text-xs font-medium text-foreground truncate" title="linkedin.com/in/jibin-309johnson">
+                      jibin-309johnson
+                    </span>
+                  </div>
+                </div>
+                <a 
+                  href={portfolioData.identity.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1 text-muted-foreground hover:text-foreground rounded transition-colors shrink-0"
+                  title="Open LinkedIn"
+                  aria-label="Open LinkedIn profile"
+                >
+                  <ExternalLink size={14} />
+                </a>
+              </div>
+
             </div>
 
             {/* Bottom Dark Card: Open to Freelance Projects & Consulting */}
-            <div className="bg-[#1C1512] border border-[#3E2E25]/80 rounded-2xl p-2.5 sm:p-3 text-white shadow-lg relative overflow-hidden flex flex-col justify-between gap-2 mt-0.5">
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 sm:p-4 text-white shadow-xl relative overflow-hidden flex flex-col gap-3">
               
-              {/* Top Row: Dotted Globe + Title on Left, 4 Capabilities on Right */}
-              <div className="flex items-center justify-between gap-3 w-full">
-                {/* Left: Globe + Title starting at top of globe */}
-                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                  <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center">
-                    <DottedGlobe size={58} />
-                  </div>
-                  <div className="flex flex-col justify-center min-w-0">
-                    <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#C59B63] font-semibold leading-none">
-                      Open to
-                    </span>
-                    <h3 className="font-serif text-sm sm:text-base font-normal text-white leading-tight mt-1 mb-0">
-                      Freelance Projects &amp; Consulting
-                    </h3>
-                  </div>
+              {/* Header: Globe + Title */}
+              <div className="flex items-center gap-3">
+                <div className="shrink-0 w-11 h-11 flex items-center justify-center">
+                  <DottedGlobe size={44} />
                 </div>
-
-                {/* Right: 4 Capability Items (2x2 Grid) */}
-                <div className="grid grid-cols-2 gap-1.5 shrink-0">
-                  {capabilities.map((cap) => {
-                    const Icon = cap.icon;
-                    return (
-                      <div key={cap.title} className="flex items-center gap-1.5">
-                        <div className="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-md border border-white/15 bg-white/5 flex items-center justify-center text-white/90 shrink-0">
-                          <Icon size={12} />
-                        </div>
-                        <span className="text-xs sm:text-[12.5px] font-medium text-neutral-200 whitespace-nowrap">
-                          {cap.title}
-                        </span>
-                      </div>
-                    );
-                  })}
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-semibold leading-none">
+                    Open to
+                  </span>
+                  <h3 className="font-serif text-sm sm:text-base font-normal text-white leading-tight mt-1 mb-0">
+                    Freelance Projects &amp; Consulting
+                  </h3>
                 </div>
               </div>
 
-              {/* Bottom: Written straight across the bottom of the container */}
-              <div className="pt-1.5 border-t border-[#3E2E25]/80 w-full">
-                <p className="text-xs sm:text-[13px] text-neutral-300/85 leading-normal m-0">
-                  Available for short-term and long-term engagements in BI, data analytics, reporting, ETL, and automation.
+              {/* 4 Capabilities Grid (2x2) */}
+              <div className="grid grid-cols-2 gap-2 pt-0.5">
+                {capabilities.map((cap) => {
+                  const Icon = cap.icon;
+                  return (
+                    <div key={cap.title} className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-md border border-white/10 bg-white/5 flex items-center justify-center text-white/90 shrink-0">
+                        <Icon size={11} />
+                      </div>
+                      <span className="text-[11px] font-medium text-neutral-300 truncate">
+                        {cap.title}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Bottom text */}
+              <div className="pt-2 border-t border-slate-800/80">
+                <p className="text-[11px] text-neutral-400 leading-tight m-0">
+                  Available for short-term and long-term engagements in BI, data analytics, reporting, and ETL.
                 </p>
               </div>
 
@@ -401,44 +397,44 @@ export function Contact() {
           </div>
 
           {/* ================= RIGHT COLUMN (SEND A MESSAGE FORM) ================= */}
-          <div className="lg:col-span-6 flex flex-col">
-            <div className="bg-[#1C1512] border border-[#3E2E25]/80 rounded-2xl sm:rounded-3xl py-3 px-3.5 sm:py-3.5 sm:px-5 lg:py-3.5 lg:px-5 text-white shadow-xl relative h-full flex flex-col justify-between">
+          <div className="lg:col-span-7 flex flex-col">
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 lg:p-6 text-white shadow-xl relative">
               
               {/* Card Header Row */}
-              <div>
-                <div className="flex items-center justify-between gap-3">
+              <div className="mb-3.5 sm:mb-4">
+                <div className="flex items-center justify-between gap-3 mb-1.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C59B63]">
+                    <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-accent">
                       Send a Message
                     </span>
-                    <span className="w-8 h-[1.5px] bg-[#C59B63]/60 inline-block" />
+                    <span className="w-6 h-[1.5px] bg-accent/60 inline-block" />
                   </div>
 
                   {/* Typically replies soon badge */}
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 text-emerald-300 text-[10px] sm:text-xs tracking-wider uppercase font-semibold">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 text-emerald-300 text-[10px] tracking-wider uppercase font-semibold">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     Typically replies soon
                   </div>
                 </div>
 
                 {/* Form Title & Description */}
-                <h3 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-normal text-white mt-1 mb-0.5 tracking-tight">
+                <h3 className="font-serif text-xl sm:text-2xl font-normal text-white mb-0.5 tracking-tight">
                   Tell Me About Your Project
                 </h3>
-                <p className="text-xs sm:text-[13px] text-neutral-400 mb-2">
+                <p className="text-xs text-neutral-400 leading-normal m-0">
                   Share a few details and I&apos;ll get back to you as soon as possible.
                 </p>
               </div>
 
               {/* The Interactive Form */}
-              <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-2 w-full">
+              <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-3.5 w-full">
                 
                 {/* Row 1: Name and Email */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   
                   {/* Name Field */}
-                  <div className="flex flex-col gap-0.5">
-                    <label htmlFor="name" className="text-xs sm:text-[13px] font-medium text-neutral-200">
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="name" className="text-xs font-medium text-neutral-300">
                       Your Name <span className="text-amber-500">*</span>
                     </label>
                     <div className="relative flex items-center">
@@ -449,14 +445,14 @@ export function Contact() {
                         name="name" 
                         required
                         placeholder="John Doe"
-                        className="w-full bg-[#140E0C] border border-[#382820]/80 rounded-lg px-3 py-1.5 pl-8 text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:border-[#C59B63] focus:ring-1 focus:ring-[#C59B63] transition-colors"
+                        className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 pl-9 text-xs sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors h-9 sm:h-10"
                       />
                     </div>
                   </div>
 
                   {/* Email Field */}
-                  <div className="flex flex-col gap-0.5">
-                    <label htmlFor="email" className="text-xs sm:text-[13px] font-medium text-neutral-200">
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="email" className="text-xs font-medium text-neutral-300">
                       Your Email <span className="text-amber-500">*</span>
                     </label>
                     <div className="relative flex items-center">
@@ -467,7 +463,7 @@ export function Contact() {
                         name="email" 
                         required
                         placeholder="john@example.com"
-                        className="w-full bg-[#140E0C] border border-[#382820]/80 rounded-lg px-3 py-1.5 pl-8 text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:border-[#C59B63] focus:ring-1 focus:ring-[#C59B63] transition-colors"
+                        className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 pl-9 text-xs sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors h-9 sm:h-10"
                       />
                     </div>
                   </div>
@@ -475,11 +471,11 @@ export function Contact() {
                 </div>
 
                 {/* Row 2: Project Type (4 Selectable Cards) */}
-                <div className="flex flex-col gap-0.5">
-                  <label className="text-xs sm:text-[13px] font-medium text-neutral-200">
+                <div className="flex flex-col gap-1">
+                  <label className="text-xs font-medium text-neutral-300">
                     Project Type <span className="text-amber-500">*</span>
                   </label>
-                  <div className="grid grid-cols-4 gap-1.5">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {projectTypes.map((pt) => {
                       const Icon = pt.icon;
                       const isSelected = projectType === pt.id;
@@ -488,14 +484,14 @@ export function Contact() {
                           key={pt.id}
                           type="button"
                           onClick={() => setProjectType(pt.id)}
-                          className={`flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-lg border transition-all cursor-pointer text-center ${
+                          className={`flex items-center sm:flex-col justify-center gap-1.5 py-2 px-2.5 rounded-lg border transition-all cursor-pointer text-center ${
                             isSelected 
-                              ? "border-[#C59B63] bg-[#C59B63]/15 text-white ring-1 ring-[#C59B63]" 
-                              : "border-[#382820]/80 bg-[#140E0C] text-neutral-400 hover:border-[#523A2E] hover:text-neutral-200"
+                              ? "border-accent bg-accent/20 text-white ring-1 ring-accent shadow-sm shadow-accent/20" 
+                              : "border-slate-800 bg-slate-950/80 text-neutral-400 hover:border-slate-700 hover:text-neutral-200"
                           }`}
                         >
-                          <Icon size={14} className={isSelected ? "text-[#C59B63]" : "text-neutral-400"} />
-                          <span className="text-xs sm:text-[13px] font-medium tracking-tight whitespace-nowrap">
+                          <Icon size={14} className={isSelected ? "text-accent" : "text-neutral-400"} />
+                          <span className="text-[11px] sm:text-xs font-medium tracking-tight whitespace-nowrap">
                             {pt.label}
                           </span>
                         </button>
@@ -505,11 +501,11 @@ export function Contact() {
                 </div>
 
                 {/* Row 3: Budget Range & Timeline (2 Dropdowns) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   
                   {/* Budget Dropdown */}
-                  <div className="flex flex-col gap-0.5">
-                    <label htmlFor="budget" className="text-xs sm:text-[13px] font-medium text-neutral-200">
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="budget" className="text-xs font-medium text-neutral-300">
                       Budget Range <span className="text-neutral-400 font-normal">(Optional)</span>
                     </label>
                     <div className="relative flex items-center">
@@ -517,37 +513,37 @@ export function Contact() {
                         id="budget" 
                         name="budget" 
                         defaultValue=""
-                        className="w-full bg-[#140E0C] border border-[#382820]/80 rounded-lg px-3 py-1.5 text-sm text-neutral-200 focus:outline-none focus:border-[#C59B63] focus:ring-1 focus:ring-[#C59B63] transition-colors appearance-none pr-8 cursor-pointer"
+                        className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-neutral-200 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors appearance-none pr-8 cursor-pointer h-9 sm:h-10"
                       >
-                        <option value="" disabled className="bg-[#140E0C] text-neutral-500">Select budget range</option>
-                        <option value="< $1,000" className="bg-[#140E0C] text-white">&lt; $1,000</option>
-                        <option value="$1,000 - $3,000" className="bg-[#140E0C] text-white">$1,000 - $3,000</option>
-                        <option value="$3,000 - $5,000" className="bg-[#140E0C] text-white">$3,000 - $5,000</option>
-                        <option value="$5,000+" className="bg-[#140E0C] text-white">$5,000+</option>
-                        <option value="To be discussed" className="bg-[#140E0C] text-white">To be discussed</option>
+                        <option value="" disabled className="bg-slate-900 text-neutral-500">Select budget range</option>
+                        <option value="< $1,000" className="bg-slate-900 text-white">&lt; $1,000</option>
+                        <option value="$1,000 - $3,000" className="bg-slate-900 text-white">$1,000 - $3,000</option>
+                        <option value="$3,000 - $5,000" className="bg-slate-900 text-white">$3,000 - $5,000</option>
+                        <option value="$5,000+" className="bg-slate-900 text-white">$5,000+</option>
+                        <option value="To be discussed" className="bg-slate-900 text-white">To be discussed</option>
                       </select>
                       <ChevronDown size={14} className="absolute right-2.5 text-neutral-400 pointer-events-none" />
                     </div>
                   </div>
 
                   {/* Timeline Dropdown */}
-                  <div className="flex flex-col gap-0.5">
-                    <label htmlFor="timeline" className="text-xs sm:text-[13px] font-medium text-neutral-200">
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="timeline" className="text-xs font-medium text-neutral-300">
                       Timeline <span className="text-neutral-400 font-normal">(Optional)</span>
                     </label>
                     <div className="relative flex items-center">
-                      <Calendar size={14} className="absolute left-2.5 text-neutral-500 pointer-events-none" />
+                      <Calendar size={14} className="absolute left-3 text-neutral-500 pointer-events-none" />
                       <select 
                         id="timeline" 
                         name="timeline" 
                         defaultValue=""
-                        className="w-full bg-[#140E0C] border border-[#382820]/80 rounded-lg px-3 py-1.5 pl-8 text-sm text-neutral-200 focus:outline-none focus:border-[#C59B63] focus:ring-1 focus:ring-[#C59B63] transition-colors appearance-none pr-8 cursor-pointer"
+                        className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 pl-9 text-xs sm:text-sm text-neutral-200 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors appearance-none pr-8 cursor-pointer h-9 sm:h-10"
                       >
-                        <option value="" disabled className="bg-[#140E0C] text-neutral-500">Select timeline</option>
-                        <option value="Immediate (< 2 weeks)" className="bg-[#140E0C] text-white">Immediate (&lt; 2 weeks)</option>
-                        <option value="1 - 2 months" className="bg-[#140E0C] text-white">1 - 2 months</option>
-                        <option value="3+ months" className="bg-[#140E0C] text-white">3+ months</option>
-                        <option value="Flexible" className="bg-[#140E0C] text-white">Flexible</option>
+                        <option value="" disabled className="bg-slate-900 text-neutral-500">Select timeline</option>
+                        <option value="Immediate (< 2 weeks)" className="bg-slate-900 text-white">Immediate (&lt; 2 weeks)</option>
+                        <option value="1 - 2 months" className="bg-slate-900 text-white">1 - 2 months</option>
+                        <option value="3+ months" className="bg-slate-900 text-white">3+ months</option>
+                        <option value="Flexible" className="bg-slate-900 text-white">Flexible</option>
                       </select>
                       <ChevronDown size={14} className="absolute right-2.5 text-neutral-400 pointer-events-none" />
                     </div>
@@ -556,16 +552,16 @@ export function Contact() {
                 </div>
 
                 {/* Row 4: Message */}
-                <div className="flex flex-col gap-0.5">
+                <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between">
-                    <label htmlFor="message" className="text-xs sm:text-[13px] font-medium text-neutral-200">
+                    <label htmlFor="message" className="text-xs font-medium text-neutral-300">
                       Message <span className="text-amber-500">*</span>
                     </label>
-                    <span className="text-[11px] text-neutral-400 font-mono">
+                    <span className="text-[10px] text-neutral-400 font-mono">
                       {messageText.length}/1000
                     </span>
                   </div>
-                  <div className="relative bg-[#140E0C] border border-[#382820]/80 rounded-lg px-3 py-1.5 focus-within:border-[#C59B63] focus-within:ring-1 focus-within:ring-[#C59B63] transition-colors">
+                  <div className="relative bg-slate-950/80 border border-slate-800 rounded-lg p-2.5 focus-within:border-accent focus-within:ring-1 focus-within:ring-accent transition-colors">
                     <textarea 
                       id="message" 
                       name="message" 
@@ -574,29 +570,29 @@ export function Contact() {
                       maxLength={1000}
                       value={messageText}
                       onChange={(e) => setMessageText(e.target.value)}
-                      placeholder="Please describe your project, requirements, goals, and any specific technologies you'd like to discuss..."
-                      className="w-full bg-transparent border-none text-sm text-white placeholder:text-neutral-500 focus:outline-none resize-none min-h-[38px] sm:min-h-[42px] leading-snug"
+                      placeholder="Describe your project, goals, or technologies..."
+                      className="w-full bg-transparent border-none text-xs sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none resize-none min-h-[56px] sm:min-h-[64px] leading-relaxed"
                     />
                   </div>
                 </div>
 
                 {/* Row 5: Attach File (Optional) */}
-                <div className="border border-[#382820]/80 bg-[#140E0C] rounded-lg py-1.5 px-2.5 sm:py-2 sm:px-3 flex items-center justify-between gap-2">
+                <div className="border border-slate-800 bg-slate-950/80 rounded-lg py-1.5 px-3 flex items-center justify-between gap-2.5">
                   <div className="flex items-center gap-2 min-w-0">
                     <div className="w-6 h-6 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-neutral-400 shrink-0">
                       <Paperclip size={13} />
                     </div>
                     <div className="flex flex-col min-w-0">
-                      <span className="text-xs sm:text-[13px] font-medium text-white truncate">
+                      <span className="text-xs font-medium text-white truncate">
                         {isCompressing 
                           ? "Compressing image..." 
                           : selectedFile 
                             ? selectedFile.name 
                             : "Attach File (Optional)"}
                       </span>
-                      <span className="text-[11px] text-neutral-400 truncate hidden sm:block">
+                      <span className="text-[10px] text-neutral-400 truncate hidden sm:block leading-none">
                         {isCompressing ? (
-                          <span className="text-[#C59B63]">Optimizing image for fast delivery...</span>
+                          <span className="text-accent">Optimizing image for fast delivery...</span>
                         ) : compressionNote ? (
                           <span className="text-emerald-400">{compressionNote}</span>
                         ) : selectedFile ? (
@@ -621,7 +617,7 @@ export function Contact() {
                       <button 
                         type="button" 
                         onClick={clearFile}
-                        className="p-1 rounded-md text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+                        className="p-1 rounded text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
                         title="Remove file"
                         aria-label="Remove attached file"
                       >
@@ -631,7 +627,7 @@ export function Contact() {
                     <button 
                       type="button" 
                       onClick={() => fileInputRef.current?.click()}
-                      className="text-xs font-medium px-2.5 py-1 rounded-md border border-white/15 bg-white/5 hover:bg-white/10 text-neutral-200 transition-colors cursor-pointer"
+                      className="text-[11px] font-semibold px-2.5 py-1 rounded-md border border-white/15 bg-white/5 hover:bg-white/10 text-neutral-200 transition-colors cursor-pointer"
                     >
                       {selectedFile ? "Change" : "Choose File"}
                     </button>
@@ -639,15 +635,15 @@ export function Contact() {
                 </div>
 
                 {/* Row 6: Submit Button */}
-                <div className="mt-0.5 flex flex-col gap-1">
+                <div className="flex flex-col gap-1.5 mt-0.5">
                   <button 
                     type="submit" 
                     disabled={status === "loading"}
-                    className="w-full bg-[#C59B63] hover:bg-[#B3874E] active:bg-[#9F7540] text-[#1C1512] font-semibold text-sm sm:text-base py-2.5 px-5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-md shadow-[#C59B63]/20 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer group"
+                    className="w-full bg-accent hover:bg-accent/90 active:scale-[0.99] text-white font-semibold text-xs sm:text-sm py-2.5 sm:py-3 px-5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-md shadow-accent/25 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer group"
                   >
                     {status === "loading" ? (
                       <>
-                        <span className="w-3.5 h-3.5 border-2 border-[#1C1512] border-t-transparent rounded-full animate-spin" />
+                        <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                         <span>Sending Message...</span>
                       </>
                     ) : status === "success" ? (
@@ -657,7 +653,7 @@ export function Contact() {
                       </>
                     ) : (
                       <>
-                        <Send size={15} className="transition-transform group-hover:translate-x-1" />
+                        <Send size={14} className="transition-transform group-hover:translate-x-1" />
                         <span>Send Message</span>
                       </>
                     )}
@@ -672,7 +668,7 @@ export function Contact() {
                         exit={{ opacity: 0, y: -4 }}
                         className="flex items-center gap-2 p-2 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs"
                       >
-                        <CheckCircle2 size={15} className="shrink-0 text-emerald-400" />
+                        <CheckCircle2 size={14} className="shrink-0 text-emerald-400" />
                         <span>Thank you! Your message has been sent successfully. I will get back to you shortly.</span>
                       </motion.div>
                     )}
@@ -684,12 +680,11 @@ export function Contact() {
                         exit={{ opacity: 0, y: -4 }}
                         className="flex items-center gap-2 p-2 rounded-lg bg-red-950/60 border border-red-500/30 text-red-300 text-xs"
                       >
-                        <AlertCircle size={15} className="shrink-0 text-red-400" />
+                        <AlertCircle size={14} className="shrink-0 text-red-400" />
                         <span>{errorMessage || "Failed to send message. Please reach out directly to jibin309johnson@gmail.com"}</span>
                       </motion.div>
                     )}
                   </AnimatePresence>
-
                 </div>
 
               </form>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, Cormorant_Garamond } from "next/font/google";
+import { Nunito, Cormorant_Garamond, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Preloader } from "@/components/Preloader";
@@ -15,10 +15,22 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
   variable: "--font-serif" 
 });
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-signature"
+});
 
 export const metadata: Metadata = {
   title: "Jibin Johnson — BI Administrator & Data Analytics Specialist",
   description: "Results-driven BI Administrator and Data Analytics Specialist with 4+ years of experience administering BI platforms, managing data pipelines, and delivering enterprise reporting solutions.",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${nunito.variable} ${cormorant.variable} antialiased selection:bg-accent selection:text-accent-foreground`}>
+      <body className={`${nunito.variable} ${cormorant.variable} ${dancingScript.variable} antialiased selection:bg-accent selection:text-accent-foreground`}>
         <Preloader />
         <ThemeProvider>
           {children}
