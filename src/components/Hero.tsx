@@ -559,7 +559,7 @@ export function Hero() {
 
             {/* Verified Professional Summary */}
             <p className="font-sans text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl">
-              Data analyst with 5 years of experience in business reporting, data modeling, and analytics, specializing in Power BI, SQL, ETL, and Power Query. I help organizations make confident, data-driven decisions by delivering accurate, insightful, and visually compelling reporting solutions.
+              {portfolioData.identity.shortProfile}
             </p>
 
             {/* Primary Action CTAs */}

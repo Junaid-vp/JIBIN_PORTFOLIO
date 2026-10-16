@@ -7,7 +7,7 @@ export const portfolioData = {
     location: "Kerala, India",
     linkedin: "https://linkedin.com/in/jibin-309johnson",
     resumeUrl: "/Jibin_Johnson_Data_Analyst.pdf",
-    shortProfile: "Data Analyst with 5 years of experience in business reporting, data modeling, and analytics, specializing in Power BI, SQL, ETL, and Power Query. I help organizations make confident, data-driven decisions by delivering accurate, insightful, and visually compelling reporting solutions. With a strong understanding of business operations, I collaborate closely with stakeholders to translate requirements into meaningful metrics, KPIs, and actionable recommendations that support strategic decision-making and improve performance."
+    shortProfile: "5+ Years Experience | Data Analyst | BI Administrator | Power BI Specialist | SQL & ETL Developer | Dashboard Automation & Enterprise Reporting"
   },
   impact: [
     {
